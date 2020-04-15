@@ -6,12 +6,12 @@ btn.addEventListener('click', ()=>{
     const name = inputMovie.value
     let request = new XMLHttpRequest();
     const name2 = name.replace(' ', '+')
-    request.open('GET', "http://www.omdbapi.com/?s="+name2+"&apikey=27a2dce7&type=movie")
+    request.open('GET', "https://www.omdbapi.com/?s="+name2+"&apikey=27a2dce7&type=movie")
     request.send();
     request.onload = () =>{
     if (request.status === 200){
         const data = JSON.parse(request.response)
-        console.log(data)
+        // console.log(data)
         Results(data)
     }
     else{
@@ -33,7 +33,7 @@ const Results = (data)=>{
         const {imdbID} = result
         titulos.push(imdbID)
     }
-    console.log(titulos)
+    // console.log(titulos)
     Tratar(titulos)
 }
 
@@ -44,7 +44,7 @@ const Tratar = (result)=>{
 
     for (e of result){
         let request = new XMLHttpRequest();
-        request.open('GET', "http://www.omdbapi.com/?i="+e+"&apikey=27a2dce7&type=movie")
+        request.open('GET', "https://www.omdbapi.com/?i="+e+"&apikey=27a2dce7&type=movie")
         request.send();
         request.onload = () =>{
         if (request.status === 200){
@@ -72,7 +72,7 @@ const Tratar = (result)=>{
         li.appendChild(act)
         itens.push(li)
         criarli(itens)
-        console.log(tratados)   
+        // console.log(tratados)   
     }
     else{
         list.innerHTML=''
